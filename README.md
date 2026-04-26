@@ -4,12 +4,15 @@ Configure the port with the variable PORT in app.py
 
 To see water data for all years for a given location, enter http://127.0.0.1:PORT/search/loc/LOCATION
     
-    for example: http://127.0.0.1:PORT/search/loc/Afghanistan
+For example: 
+http://127.0.0.1:PORT/search/loc/Afghanistan
 
 To see water data for all locations for a given year, enter http://127.0.0.1:PORT/search/year/YEAR
 
-    for example: http://127.0.0.1:PORT/search/year/2005
+For example: 
+    http://127.0.0.1:PORT/search/year/2005
 
 To see water data for a specific location and year, enter http://127.0.0.1:PORT/LOCATION/YEAR
 
-    for example: http://127.0.0.1:PORT/Afghanistan/2005
+For example: 
+    http://127.0.0.1:PORT/Afghanistan/2005
