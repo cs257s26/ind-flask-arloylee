@@ -28,6 +28,8 @@ def getData(location, year) -> list:
 	result = []
 	minYear = 2000
 	maxYear = 2024
+
+	loadData() # Redundant for CLI, but needed for Flask test functionality. Non optimal, do not use if not testing.
 	
 	# if user specified no arguments, return an error.
 	if (location == None and year == None):
@@ -44,7 +46,7 @@ def getData(location, year) -> list:
 
 	# if user has input a year, check if it is in the acceptable range.
 	elif (minYear > int(year) or int(year) > maxYear):
-		result = "Year outside range, please specify a year in the range 2000-2024"
+		result = "Year outside range, please specify a year in the range 2000-2024."
 
 	# if user inputs a year and a location, it will return the associated data.
 	elif (location != None and year != None):
@@ -97,15 +99,18 @@ def setUpParser():
 
 def loadData():
 	"""Loads in data from CSV files and stores it in `waterCountries` and `waterRegions`"""
-	with open(COUNTRYFILENAME, newline='') as datafile:
-		csv_file = csv.reader(datafile)
-		for row in csv_file:
-			waterCountries.append(row)
 
-	with open(REGIONFILENAME, newline='') as datafile:
-		csv_file = csv.reader(datafile)
-		for row in csv_file:
-			waterRegions.append(row)
+	if len(waterCountries) == 0:
+		with open(COUNTRYFILENAME, newline='') as datafile:
+			csv_file = csv.reader(datafile)
+			for row in csv_file:
+				waterCountries.append(row)
+
+	if len(waterRegions) == 0:
+		with open(REGIONFILENAME, newline='') as datafile:
+			csv_file = csv.reader(datafile)
+			for row in csv_file:
+				waterRegions.append(row)
 
 	
 if __name__ == '__main__':

@@ -2,4 +2,4 @@
 
 Put any sources (not included in the assignment) that you referenced in doing this assignment. This includes: websites, people you consulted, and (where sanctioned) GenAI prompts and chatlogs. Include a brief sentence on how you used each resource.
 
-- Referenced/used code from the flask intro lab.
+- I referenced and used code from the flask intro lab from week 4.
