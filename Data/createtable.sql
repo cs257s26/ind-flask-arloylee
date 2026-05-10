@@ -1,19 +1,33 @@
-DROP TABLE IF EXISTS water_Region;
-CREATE TABLE water_Region (
-  weather_date DATE,
-  max_temp REAL,
-  min_temp REAL,
-  precip TEXT,
-  snow TEXT,
-  snow_depth TEXT
+DROP TABLE IF EXISTS water_country;
+CREATE TABLE water_country (
+  country TEXT,
+  year REAL,
+  population_thou REAL,
+  urban_perc REAL,
+  basic_perc REAL,
+  limited_prec REAL,
+  unimproved_, REAL
+  safely_managed REAL,
+  accessible REAL,
+  available REAL,
+  no_contamination REAL,
+  piped REAL,
+  non_piped REAL
 );
 
-DROP TABLE IF EXISTS water_Country;
-CREATE TABLE water_Country (
-  weather_date DATE,
-  max_temp REAL,
-  min_temp REAL,
-  precip TEXT,
-  snow TEXT,
-  snow_depth TEXT
+DROP TABLE IF EXISTS water_region;
+CREATE TABLE water_region (
+  region TEXT,
+  year REAL,
+  population_thou REAL,
+  urban_perc REAL,
+  basic_perc REAL,
+  limited_prec REAL,
+  unimproved_, REAL
+  safely_managed REAL,
+  accessible REAL,
+  available REAL,
+  no_contamination REAL,
+  piped REAL,
+  non_piped REAL
 );

@@ -1,7 +1,6 @@
-"""psycopg2-sample.py
+"""datasource.py
 
-Sample code demonstrating how to use the psycopg2 Python library to 
-connect to a database and execute a query.
+Code to fetch querys from water data
 """
 
 import psycopg2 as ps
