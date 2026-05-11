@@ -3,7 +3,6 @@ from ProductionCode.command_line import *
 import csv
 
 app = Flask(__name__)
-PORT = 5100
 
 data = []
 
@@ -49,4 +48,4 @@ def python_bug(e):
 
 if __name__ == '__main__':
     loadData()
-    app.run(port=PORT)
+    app.run()

@@ -2,11 +2,11 @@ DROP TABLE IF EXISTS water_country;
 CREATE TABLE water_country (
   country TEXT,
   year REAL,
-  population_thou REAL,
+  population_thou TEXT,
   urban_perc REAL,
   basic_perc REAL,
   limited_prec REAL,
-  unimproved_, REAL
+  unimproved REAL,
   safely_managed REAL,
   accessible REAL,
   available REAL,
@@ -23,7 +23,7 @@ CREATE TABLE water_region (
   urban_perc REAL,
   basic_perc REAL,
   limited_prec REAL,
-  unimproved_, REAL
+  unimproved REAL,
   safely_managed REAL,
   accessible REAL,
   available REAL,
