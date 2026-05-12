@@ -22,22 +22,41 @@ def connect():
         exit()
     return connection
 
-def get_max_temp_over_threshold(connection, temp: float) -> list:
-    """Retrieves all dates (and all the weather information associated with those dates) where the high temperature was above a specified threshold.
+def get_water_data_year_and_location(connection, location: str, year: int) -> list:
+    """Retrieves the data associated with a particular year and location
 
     Args:
         connection (psycopg2.connection) - the connection to the database
-        temp (float) - the minimum high temperature
+        location (str) - the requested string
+        year (int) - the requested year
 
     Returns:
-        list - a list of all dates where the high temperature is greater or equal to temp, or None if the query fails.
+        list - a list of all data that matches both the year and location
     """
     try:
         cursor = connection.cursor()
-        query = "SELECT * FROM weather_small WHERE max_temp>%s ORDER BY max_temp DESC;"
-        cursor.execute(query, (temp,))
+        query = "SELECT * FROM water_country WHERE country = %s AND year = %s UNION ALL SELECT * FROM water_region WHERE region = %s AND year = %s;"
+        cursor.execute(query, (location, year, location, year))
         return cursor.fetchall()
+    except Exception as e:
+        print ("Something went wrong when executing the query: ", e)
+        return None
 
+def get_water_data_location(connection, location: str) -> list:
+    """Retrieves the data associated with a particular location
+
+    Args:
+        connection (psycopg2.connection) - the connection to the database
+        location (str) - the requested string
+
+    Returns:
+        list - a list of all data that matches the location
+    """
+    try:
+        cursor = connection.cursor()
+        query = "SELECT * FROM water_country WHERE country = %s UNION ALL SELECT * FROM water_region WHERE region = %s;"
+        cursor.execute(query, (location, location,))
+        return cursor.fetchall()
     except Exception as e:
         print ("Something went wrong when executing the query: ", e)
         return None
@@ -47,7 +66,15 @@ def main():
     connection = connect()
 
     # Execute a simple query: how many earthquakes above the specified magnitude are there in the data?
-    results = get_max_temp_over_threshold(connection, 50)
+    results = get_water_data_year_and_location(connection, "Afghanistan", 2005)
+    
+    if results is not None:
+        print("Query results: ")
+        for item in results:
+            print(item)
+            
+    # Execute a simple query: how many earthquakes above the specified magnitude are there in the data?
+    results = get_water_data_location(connection, "Oceania")
     
     if results is not None:
         print("Query results: ")
